@@ -12,6 +12,10 @@ app.use(express.static(path.join(__dirname, 'SideBar')));
 app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, 'SideBar/index.html'));
 });
+app.use((err, req, res, next) => {
+  console.error(err.stack);
+  res.status(500).send('Something broke!');
+});
 
 app.post('/merge', upload.array('pdfs', 2), async function (req, res, next) {
   try {
