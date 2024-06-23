@@ -7,10 +7,10 @@ const { mergePDF } = require('./merge');
 const upload = multer({ dest: 'uploads/' });
 const port = 3000;
 
-app.use(express.static(path.join(__dirname, 'SideBar')));
+app.use(express.static(path.join(__dirname, '/SideBar')));
 
 app.get('/', (req, res) => {
-  res.sendFile(path.join(__dirname, 'SideBar/index.html'));
+  res.sendFile(path.join(__dirname, '/SideBar/index.html'));
 });
 app.use((err, req, res, next) => {
   console.error(err.stack);
