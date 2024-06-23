@@ -5,7 +5,7 @@ const app = express();
 const multer  = require('multer');
 const { mergePDF } = require('./merge');
 const upload = multer({ dest: 'uploads/' });
-const port = 3000;
+const port = process.env.PORT || 3000;
 
 app.use(express.static(path.join(__dirname, '/SideBar')));
 
@@ -33,9 +33,9 @@ app.post('/merge', upload.array('pdfs', 2), async function (req, res, next) {
     
     // Redirect to merged PDF
     res.redirect('/merge/pdf');
-    setTimeout(()=>{
-       fs.rmdir(path.join(__dirname, 'uploads'), { recursive: true });
-    },10000)
+    // setTimeout(()=>{
+    //    fs.rmdir(path.join(__dirname, 'uploads'), { recursive: true });
+    // },10000)
   } catch (error) {
     console.error('Error merging PDFs:', error);
     res.status(500).send('Error merging PDFs');
