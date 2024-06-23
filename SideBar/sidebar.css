@@ -194,7 +194,7 @@ h1{
         margin: 2px;
       }
       .sidebar{
-        width: 30vw;
+        width: 50vw;
     }
     .developer{
         width: 45vw;
@@ -208,6 +208,7 @@ h1{
     }
     .about{
         margin-bottom: 39px;
+        width: 40vw;
     }
     /* .data{
         padding-left:33vw;
