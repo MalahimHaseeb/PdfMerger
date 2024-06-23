@@ -197,7 +197,7 @@ h1{
         width: 50vw;
     }
     .developer{
-        width: 45vw;
+        width: 50vw;
     }
     .developer>.info>h2{
         font-size: large;
@@ -208,7 +208,7 @@ h1{
     }
     .about{
         margin-bottom: 39px;
-        width: 40vw;
+        width: 45vw;
     }
     /* .data{
         padding-left:33vw;
