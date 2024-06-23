@@ -12,10 +12,6 @@ app.use(express.static(path.join(__dirname, '/SideBar')));
 app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, '/SideBar/index.html'));
 });
-app.use((err, req, res, next) => {
-  console.error(err.stack);
-  res.status(500).send('Something broke!');
-});
 
 app.post('/merge', upload.array('pdfs', 2), async function (req, res, next) {
   try {
@@ -34,15 +30,15 @@ app.post('/merge', upload.array('pdfs', 2), async function (req, res, next) {
     // Redirect to merged PDF
     res.redirect('/merge/pdf');
     setTimeout(()=>{
-       fs.rmdir(path.join(__dirname, 'uploads'), { recursive: true });
-    },10000)
+       fs.rmdir(path.join(__dirname, '/uploads'), { recursive: true });
+    },1000)
   } catch (error) {
     console.error('Error merging PDFs:', error);
     res.status(500).send('Error merging PDFs');
   }
 });
 
-app.use('/merge/pdf', express.static(path.join(__dirname, 'uploads/merged.pdf')));
+app.use('/merge/pdf', express.static(path.join(__dirname, '/uploads/merged.pdf')));
 
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`);
