@@ -1,109 +1,101 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sidebar</title>
     <link rel="stylesheet" href="sidebar.css">
 </head>
-
 <body>
     <!-- sidebar  -->
-    <section onmouseleave="hide()" id="sidebar" class="sidebar">
-        <div onclick="hide()">
-            <div class="box">
-                <div class="line"></div>
-            </div>
-            <div class="box">
-                <div class="line1"></div>
-            </div>
+    <section id="sidebar" class="sidebar">
+        <div class="close-btn" onclick="hide()">
+            <div class="line"></div>
+            <div class="line1"></div>
         </div>
         <div class="content">
             <p>Home</p>
             <p>About</p>
-            <p>Contect Us</p>
+            <p>Contact Us</p>
             <p>Developer</p>
         </div>
     </section>
-     
+
     <!-- hamburger menu  -->
     <div id="btn" class="btn" onclick="display()">
         <div class="li"></div>
         <div class="li"></div>
         <div class="li li1"></div>
     </div>
-     
+
     <!-- content  -->
-    <h1>Pdfs Merger</h1>
-     <div id="data" class="data">
-        <div class="entry">
-          <h2>Enter the pdfs to merge</h2>
-          <form method="post" action="/merge" enctype="multipart/form-data">
-              <input type="file" multiple  accept=".pdf" name="pdfs">
-              <button type="submit">Merge</button>
-          </form>
-        </div>
-        <!-- about us  -->
-         <section class="about">
-            <div class="us">
-               <h2>Notes</h2>
-               <ul>
-                <li>Created by node js</li>
-                <li>This tool is free</li>
-                <li>Merge any two pdfs</li>
-                <li>Merged pdf can be downloaded</li>
-                <li>Download your merged pdf within 10 mints</li>
-               </ul>
+    <main class="main-content">
+        <h1>Pdfs Merger</h1>
+        <div id="data" class="data">
+            <div class="entry">
+                <h2>Enter the pdfs to merge</h2>
+                <form id="mergeForm" method="post" action="/merge" enctype="multipart/form-data">
+                    <input type="file" multiple accept=".pdf" name="pdfs">
+                    <button type="submit">Merge</button>
+                </form>
             </div>
-         </section>
-     </div>
-     
-     <!-- Developer  -->
-      <section onmouseenter="hide()" id="developer" class="developer">
-         <div class="info">
+            <!-- about us  -->
+            <section class="about">
+                <div class="us">
+                    <h2>Notes</h2>
+                    <ul>
+                        <li>Created by node js</li>
+                        <li>This tool is free</li>
+                        <li>Merge any two pdfs</li>
+                        <li>Merged pdf can be downloaded</li>
+                        <li>Download your merged pdf within 10 mins</li>
+                    </ul>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Developer  -->
+    <section id="developer" class="developer">
+        <div class="info">
             <h2>Developer Info</h2>
             <div class="image">
-                <span class="imgB"></span>
                 <img src="./dev.jpeg" class="img" alt="developer">
             </div>
-            <p><span class="bold">Name: </span><span>Haseeb</span></p>
-            <p><span class="bold">Current Study: </span><span>BSCS</span></p>
-            <p><span class="bold">Age: </span><span>19</span></p>
-            <p><span class="bold">FunFact </span><span>Anime Lover</span></p>
-            <p><span class="bold">City: </span><span>Lahore</span></p>
-            <p><span class="bold">Contact: </span><span>Instagram</span></p>
-         </div>
-      </section>
-    <script>
+            <p><span class="bold">Name: </span>Haseeb</p>
+            <p><span class="bold">Current Study: </span>BSCS</p>
+            <p><span class="bold">Age: </span>19</p>
+            <p><span class="bold">FunFact: </span>Anime Lover</p>
+            <p><span class="bold">City: </span>Lahore</p>
+            <p><span class="bold">Contact: </span>Instagram</p>
+        </div>
+    </section>
 
+    <script>
         const hide = () => {
-            document.getElementById('sidebar').classList.remove('hide')
+            document.getElementById('sidebar').classList.remove('show');
             setTimeout(() => {
-                document.getElementById('btn').style.display = 'block'
-                document.getElementById('data').style.zIndex = '1'
+                document.getElementById('btn').style.display = 'block';
+                document.getElementById('data').style.zIndex = '1';
             }, 1000);
         }
+
         const display = () => {
-            document.getElementById('sidebar').classList.add('hide')
+            document.getElementById('sidebar').classList.add('show');
             setTimeout(() => {
-                document.getElementById('btn').style.display = 'none'
-                document.getElementById('data').style.zIndex = '-1'
+                document.getElementById('btn').style.display = 'none';
+                document.getElementById('data').style.zIndex = '-1';
             }, 400);
         }
-        document.addEventListener('DOMContentLoaded', function() {
-        const mergeForm = document.getElementById('mergeForm');
 
-        mergeForm.addEventListener('submit', function(event) {
-            event.preventDefault(); // Prevent the form from submitting normally
-
-            // Perform form submission using Fetch API or AJAX if needed
-
-            // Reset file input after submission
-            mergeForm.reset();
-        });
-    });
+        // document.addEventListener('DOMContentLoaded', function() {
+        //     const mergeForm = document.getElementById('mergeForm');
+        //     mergeForm.addEventListener('submit', function(event) {
+        //         event.preventDefault();
+        //         // Perform form submission using Fetch API or AJAX if needed
+        //         mergeForm.reset();
+        //     });
+        // });
     </script>
 </body>
-
 </html>
