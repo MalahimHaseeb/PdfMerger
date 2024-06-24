@@ -1,12 +1,14 @@
 const PDFMerger = require('pdf-merger-js');
 
-var merger = new PDFMerger();
-
-const mergePDF = async (a,b) => {
-  merger.add(a);  //merge all pages. parameter is the path to file and filename.
+const mergePDF = async (a, b) => {
+  const merger = new PDFMerger();
+  merger.add(a);
   merger.add(b);
 
-  await merger.save('uploads/merged.pdf'); //save under given name and reset the internal document
+  const d = new Date().getTime();
+  const fileName = `${d}.pdf`;
+  await merger.save(`uploads/${fileName}`);
+  return fileName;
 };
 
 module.exports = { mergePDF };
